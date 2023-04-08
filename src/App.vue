@@ -1,5 +1,5 @@
 <template>
-  <the-navigation ></the-navigation>
+  <the-navigation></the-navigation>
   <main>
     <router-view></router-view>
   </main>
