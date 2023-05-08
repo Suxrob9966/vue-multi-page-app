@@ -12,10 +12,16 @@ const router = createRouter({
   routes: [
     { path: '/', redirect: '/teams' }, //redirect to teams if there is slash nothing
     {
+      name: 'teams',
       path: '/teams',
       component: TeamsList,
       children: [
-        { path: ':teamId', component: TeamMembers, props: true }, // everything after : is routeParams,
+        {
+          name: 'team-members',
+          path: ':teamId',
+          component: TeamMembers,
+          props: true,
+        }, // everything after : is routeParams,
       ],
     }, // our-domain.com/teams => TeamsList
     { path: '/users', component: UsersList }, // our-domain.com/users => UsersList
