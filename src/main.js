@@ -11,10 +11,15 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', redirect: '/teams' }, //redirect to teams if there is slash nothing
-    { path: '/teams', component: TeamsList }, // our-domain.com/teams => TeamsList
+    {
+      path: '/teams',
+      component: TeamsList,
+      children: [
+        { path: ':teamId', component: TeamMembers, props: true }, // everything after : is routeParams,
+      ],
+    }, // our-domain.com/teams => TeamsList
     { path: '/users', component: UsersList }, // our-domain.com/users => UsersList
-    { path: '/teams/:teamId', component: TeamMembers, props: true }, // everything after : is routeParams,
-    { path: '/:notFound(.*)', component: NotFound },
+    { path: '/:notFound(.*)', component: NotFound }, // if not existing route is entered
   ],
   linkActiveClass: 'active',
 });
