@@ -29,6 +29,11 @@ const router = createRouter({
     {
       path: '/users',
       components: { default: UsersList, footer: UsersFooter },
+      beforeEnter(to, from, next) {
+        console.log('Users beforeEnter');
+        console.log(to, from);
+        next();
+      },
     }, // our-domain.com/users => UsersList
     { path: '/:notFound(.*)', component: NotFound }, // if not existing route is entered
   ],
@@ -43,8 +48,8 @@ const router = createRouter({
 });
 
 router.beforeEach(function (to, from, next) {
-  console.log('Global before each');
-  console.log(to, from);
+  // console.log('Global before each');
+  // console.log(to, from);
   next(); // next() is used to perform action before navigating to another route
 });
 
