@@ -53,6 +53,10 @@ router.beforeEach(function (to, from, next) {
   next(); // next() is used to perform action before navigating to another route
 });
 
+router.afterEach(function (to, from) {
+  // good for sending analytics
+});
+
 const app = createApp(App);
 
 app.use(router); // to link router and app
